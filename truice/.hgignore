@@ -1,0 +1,11 @@
+# use glob syntax.
+syntax: glob
+
+*.dcu
+__history\
+*.exe
+*.identcache
+*.dll
+Thumbs.db
+rls\
+*.dproj.local

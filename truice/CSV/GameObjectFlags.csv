@@ -1,0 +1,9 @@
+0;In use (can't interact with the object)
+1;Makes chests/doors locked (requiring a key to open)
+2;Cannot interact (condition to interact)
+3;Transport (Object can transport (elevator, boat, car))
+4;UNK1
+5;No despawn (never despawn, typically for doors, they just change state)
+6;Triggered (typically, summoned objects. Triggered by spell or other events)
+9;DAMAGED
+10;DESTROYED

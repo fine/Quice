@@ -991,7 +991,7 @@ type
     edgeoccurence: TLabeledEdit;
     edgeend_time: TLabeledEdit;
     edgestart_time: TLabeledEdit;
-    edgeentry: TLabeledEdit;
+    edgeeventEntry: TLabeledEdit;
     btFullScriptCreatureLocation: TButton;
     btFullScriptGOLocation: TButton;
     btAddQuestGiver: TSpeedButton;
@@ -1186,24 +1186,14 @@ type
     edhttransguid: TLabeledEdit;
     edhtstable_slots: TLabeledEdit;
     edhtat_login: TLabeledEdit;
-    edhtpending_honor: TLabeledEdit;
-    edhtlast_honor_date: TLabeledEdit;
-    edhtlast_kill_date: TLabeledEdit;
     cbhtonline: TCheckBox;
     cbhtcinematic: TCheckBox;
-    cbhtis_logout_resting: TCheckBox;
-    cbhtat_login: TCheckBox;
-    cbhtgmstate: TCheckBox;
-    edhtdata: TJvComboEdit;
-    lbhtdata: TLabel;
     edhtrace: TJvComboEdit;
     lbhtrace: TLabel;
     edhtclass: TJvComboEdit;
     lbhtclass: TLabel;
     edhtmap: TJvComboEdit;
     lbhtmap: TLabel;
-    edhttaximask: TJvComboEdit;
-    lbhttaximask: TLabel;
     edhtzone: TJvComboEdit;
     lbhtzone: TLabel;
     tsCharacterScript: TTabSheet;
@@ -1222,11 +1212,9 @@ type
     btCharInvAdd: TSpeedButton;
     lvCharacterInventory: TJvListView;
     edhiguid: TLabeledEdit;
-    edhiitem_template: TJvComboEdit;
     edhibag: TLabeledEdit;
     edhislot: TLabeledEdit;
     edhiitem: TLabeledEdit;
-    lbhiitem_template: TLabel;
     edcolootmode: TJvComboEdit;
     lbcolootmode: TLabel;
     lbcplootmode: TLabel;
@@ -1397,12 +1385,12 @@ type
     btMillingLootDel: TSpeedButton;
     btFullScriptMillingLoot: TButton;
     btScriptMillingLoot: TButton;
-    edceequipentry1: TJvComboEdit;
-    edceequipentry2: TJvComboEdit;
-    edceequipentry3: TJvComboEdit;
-    lbceequipentry1: TLabel;
-    lbceequipentry2: TLabel;
-    lbceequipentry3: TLabel;
+    edceitemEntry1: TJvComboEdit;
+    edceitemEntry2: TJvComboEdit;
+    edceitemEntry3: TJvComboEdit;
+    lbceitemEntry1: TLabel;
+    lbceitemEntry2: TLabel;
+    lbceitemEntry3: TLabel;
     edclphaseMask: TLabeledEdit;
     edglphaseMask: TLabeledEdit;
     edgeholiday: TLabeledEdit;
@@ -1600,6 +1588,50 @@ type
     edptWDBVerified: TLabeledEdit;
     edgeworld_event: TLabeledEdit;
     Timer2: TTimer;
+    edhtgender: TLabeledEdit;
+    edhtlevel: TLabeledEdit;
+    edhtxp: TLabeledEdit;
+    edhtmoney: TLabeledEdit;
+    edhtplayerBytes: TLabeledEdit;
+    edhtplayerBytes2: TLabeledEdit;
+    edhtplayerFlags: TLabeledEdit;
+    edhtinstance_id: TLabeledEdit;
+    edhtinstance_mode_mask: TLabeledEdit;
+    edhtextra_flags: TLabeledEdit;
+    edhtdeath_expire_time: TLabeledEdit;
+    edhttaxi_path: TLabeledEdit;
+    edhtarenaPoints: TLabeledEdit;
+    edhttotalHonorPoints: TLabeledEdit;
+    edhttodayHonorPoints: TLabeledEdit;
+    edhtyesterdayHonorPoints: TLabeledEdit;
+    edhttotalKills: TLabeledEdit;
+    edhttodayKills: TLabeledEdit;
+    edhtyesterdayKills: TLabeledEdit;
+    edhtchosenTitle: TLabeledEdit;
+    edhtknownCurrencies: TLabeledEdit;
+    edhtwatchedFaction: TLabeledEdit;
+    edhtdrunk: TLabeledEdit;
+    edhthealth: TLabeledEdit;
+    edhtpower1: TLabeledEdit;
+    edhtpower2: TLabeledEdit;
+    edhtpower3: TLabeledEdit;
+    edhtpower4: TLabeledEdit;
+    edhtpower5: TLabeledEdit;
+    edhtpower6: TLabeledEdit;
+    edhtpower7: TLabeledEdit;
+    edhtlatency: TLabeledEdit;
+    edhtspeccount: TLabeledEdit;
+    edhtactivespec: TLabeledEdit;
+    edhtexploredZones: TLabeledEdit;
+    edhtequipmentCache: TLabeledEdit;
+    edhtammoId: TLabeledEdit;
+    edhtknownTitles: TLabeledEdit;
+    edhtactionBars: TLabeledEdit;
+    edhtdeleteInfos_Account: TLabeledEdit;
+    edhtdeleteInfos_Name: TLabeledEdit;
+    edhtdeleteDate: TLabeledEdit;
+    edhttaximask: TLabeledEdit;
+    cbhtis_logout_resting: TCheckBox;
     procedure FormActivate(Sender: TObject);
     procedure btSearchClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
@@ -3882,7 +3914,7 @@ begin
   edSearchGameEventEntry.Clear;
   edSearchGameEventDesc.Clear;
   edSearchPageTextEntry.Clear;
-  edgeentry.Clear;
+  edgeeventEntry.Clear;
   edgelength.Clear;
   edgeoccurence.Clear;
   edgeworld_event.Clear;
@@ -4181,8 +4213,8 @@ begin
 end;
 procedure TMainForm.LoadCharacterInventory(GUID: integer);
 begin
-  LoadCharQueryToListView(Format('SELECT ci.*, i.name FROM `'+CharDBName+'`.`character_inventory` ci '+
-  'LEFT OUTER JOIN `item_template` i ON i.entry = ci.item_template '+
+  LoadCharQueryToListView(Format('SELECT ci.*, i.name FROM `'+CharDBName+'`.`character_inventory` ci LEFT JOIN `'+CharDBName+'`.`item_instance` ii'+
+  ' ON ii.guid = ci.item LEFT JOIN `item_template` i ON i.entry = ii.itemEntry '+
   'WHERE ci.`guid` = %d ORDER BY ci.`bag`, ci.`slot`',[guid]), lvCharacterInventory);
 end;
 
@@ -4485,19 +4517,19 @@ end;
 
 procedure TMainForm.tsCreatureEquipTemplateShow(Sender: TObject);
 var
-  equipentry: integer;
+  itemEntry: integer;
 begin
-  if (edceequipentry1.Text='') then edceequipentry1.Text := '0';
-  if (edceequipentry2.Text='') then edceequipentry2.Text := '0';
-  if (edceequipentry3.Text='') then edceequipentry3.Text := '0';
+  if (edceitemEntry1.Text='') then edceitemEntry1.Text := '0';
+  if (edceitemEntry2.Text='') then edceitemEntry2.Text := '0';
+  if (edceitemEntry3.Text='') then edceitemEntry3.Text := '0';
 
   if Assigned(lvclCreatureLocation.Selected) and (StrToIntDef(edclequipment_id.Text,0)<>0) then
-    equipentry := StrToIntDef(edclequipment_id.Text,0)
+    itemEntry := StrToIntDef(edclequipment_id.Text,0)
   else
-    equipentry := StrToIntDef(edctequipment_id.Text,0);
-  if equipentry <> 0 then
+    itemEntry := StrToIntDef(edctequipment_id.Text,0);
+  if itemEntry <> 0 then
   begin
-    edceEntry.Text := IntToStr(equipentry);
+    edceEntry.Text := IntToStr(itemEntry);
 
   end;
 end;
@@ -5740,7 +5772,6 @@ begin
     edhibag.Text := SubItems[0];
     edhislot.Text := SubItems[1];
     edhiitem.Text := SubItems[2];
-    edhiitem_template.Text := SubItems[3];
   end;
 end;
 
@@ -5829,10 +5860,10 @@ end;
 procedure TMainForm.LoadCreaturesAndGOForGameEvent(entry: string);
 begin
   MyTempQuery.SQL.Text  := 
-    Format('SELECT gec.guid, gec.event, ct.entry, ct.name FROM `game_event_creature` gec '+
+    Format('SELECT gec.guid, gec.eventEntry, ct.entry, ct.name FROM `game_event_creature` gec '+
           'LEFT OUTER JOIN creature c on c.guid = gec.guid ' +
           'LEFT OUTER JOIN creature_template ct on ct.entry = c.id ' +
-          'WHERE abs(`event`)=%s',[entry]);
+          'WHERE abs(`eventEntry`) = %s',[entry]);
   MyTempQuery.Open;
   lvGameEventCreature.Items.BeginUpdate;
   try
@@ -5854,10 +5885,10 @@ begin
   MyTempQuery.Close;
 
   MyTempQuery.SQL.Text  := 
-    Format('SELECT gec.guid, gec.event, ct.entry, ct.name FROM `game_event_gameobject` gec '+
+    Format('SELECT gec.guid, gec.eventEntry, ct.entry, ct.name FROM `game_event_gameobject` gec '+
           'LEFT OUTER JOIN gameobject c on c.guid = gec.guid ' +
           'LEFT OUTER JOIN gameobject_template ct on ct.entry = c.id ' +
-          'WHERE abs(`event`)=%s',[entry]);
+          'WHERE abs(`eventEntry`)=%s',[entry]);
   MyTempQuery.Open;
   lvGameEventGO.Items.BeginUpdate;
   try
@@ -6519,7 +6550,7 @@ procedure TMainForm.lvSearchGameEventSelectItem(Sender: TObject; Item: TListItem
 begin
   if Selected then
   begin
-    edgeentry.Text := Item.Caption;
+    edgeeventEntry.Text := Item.Caption;
     edgestart_time.Text := Item.SubItems[0];
     edgeend_time.Text   := Item.SubItems[1];
     edgeoccurence.Text := Item.SubItems[2];
@@ -6767,22 +6798,22 @@ begin
   if not Assigned(lvSearchGameEvent.Selected) then Exit;
   
   meotLog.Clear;
-  entry :=  edgeentry.Text;
+  entry := edgeeventEntry.Text;
   if (entry='') then Exit;
   SetFieldsAndValues(Fields, Values, 'game_event', PFX_GAME_EVENT, meotLog);
   case SyntaxStyle of
-    ssInsertDelete: s1 := Format('DELETE FROM `game_event` WHERE (`entry`=%s);'#13#10+
+    ssInsertDelete: s1 := Format('DELETE FROM `game_event` WHERE (`eventEntry`=%s);'#13#10+
       'INSERT INTO `game_event` (%s) VALUES (%s);'#13#10,[entry, Fields, Values]);
     ssReplace: s1 := Format('REPLACE INTO `game_event` (%s) VALUES (%s);'#13#10,[Fields, Values]);
-    ssUpdate: s1 := MakeUpdate('game_event', PFX_GAME_EVENT, 'entry', entry);
+    ssUpdate: s1 := MakeUpdate('game_event', PFX_GAME_EVENT, 'eventEntry', entry);
   end;
 
-  s2 := Format('DELETE FROM `game_event_creature` WHERE abs(`event`) = %s;'#13#10,[entry]);
-  s3 := Format('DELETE FROM `game_event_gameobject` WHERE abs(`event`) = %s;'#13#10,[entry]);
+  s2 := Format('DELETE FROM `game_event_creature` WHERE abs(`eventEntry`) = %s;'#13#10,[entry]);
+  s3 := Format('DELETE FROM `game_event_gameobject` WHERE abs(`eventEntry`) = %s;'#13#10,[entry]);
 
   if lvGameEventCreature.Items.Count > 0 then
   begin
-    s2 := Format('%sINSERT INTO `game_event_creature` (`guid`, `event`) VALUES'#13#10,[s2]);
+    s2 := Format('%sINSERT INTO `game_event_creature` (`guid`, `eventEntry`) VALUES'#13#10,[s2]);
     for I := 0 to lvGameEventCreature.Items.Count - 1 do
     begin
       tmp := Format('(%s,%s)', [lvGameEventCreature.Items[i].Caption, lvGameEventCreature.Items[i].SubItems[0]]);
@@ -6793,7 +6824,7 @@ begin
 
   if lvGameEventGO.Items.Count > 0 then
   begin
-    s3 := Format('%sINSERT INTO `game_event_gameobject` (`guid`, `event`) VALUES'#13#10,[s3]);
+    s3 := Format('%sINSERT INTO `game_event_gameobject` (`guid`, `eventEntry`) VALUES'#13#10,[s3]);
     for I := 0 to lvGameEventGO.Items.Count - 1 do
     begin
       tmp := Format('(%s,%s)', [lvGameEventGO.Items[i].Caption, lvGameEventGO.Items[i].SubItems[0]]);
@@ -9509,7 +9540,7 @@ procedure TMainForm.btGameEventAddClick(Sender: TObject);
 begin
   with lvSearchGameEvent.Items.Add do
   begin
-    Caption := edgeentry.Text;
+    Caption := edgeeventEntry.Text;
     SubItems.Add(edgestart_time.Text);
     SubItems.Add(edgeend_time.Text);
     SubItems.Add(edgeoccurence.Text);
@@ -9527,9 +9558,9 @@ begin
   begin
     PageControl6.ActivePageIndex := SCRIPT_TAB_NO_OTHER;
     meotScript.Text := Format(
-    'DELETE FROM `game_event` WHERE `entry` = %0:s;'#13#10 +
-    'DELETE FROM `game_event_creature` WHERE abs(`event`) = %0:s;'#13#10 +
-    'DELETE FROM `game_event_gameobject` WHERE abs(`event`) = %0:s;'#13#10
+    'DELETE FROM `game_event` WHERE `eventEntry` = %0:s;'#13#10 +
+    'DELETE FROM `game_event_creature` WHERE abs(`eventEntry`) = %0:s;'#13#10 +
+    'DELETE FROM `game_event_gameobject` WHERE abs(`eventEntry`) = %0:s;'#13#10
     ,[lvSearchGameEvent.Selected.Caption])
   end;
 end;
@@ -9540,7 +9571,7 @@ begin
   begin
     with lvSearchGameEvent.Selected do
     begin
-      Caption := edgeentry.Text;
+      Caption := edgeeventEntry.Text;
       SubItems[0] := edgestart_time.Text;
       SubItems[1] := edgeend_time.Text;
       SubItems[2] := edgeoccurence.Text;
@@ -9573,7 +9604,7 @@ begin
     with lvGameEventCreature.Items.Add do
     begin
       Caption := edgeCreatureGuid.Text;
-      SubItems.Add(edgeentry.Text);
+      SubItems.Add(edgeeventEntry.Text);
     end;
   end;
 end;
@@ -9597,7 +9628,7 @@ begin
     with lvGameEventGO.Items.Add do
     begin
       Caption := edgeGOguid.Text;
-      SubItems.Add(edgeentry.Text);
+      SubItems.Add(edgeeventEntry.Text);
     end;
   end;
 end;
@@ -12719,7 +12750,6 @@ begin
     SubItems.Add(edhibag.Text);
     SubItems.Add(edhislot.Text);
     SubItems.Add(edhiitem.Text);
-    SubItems.Add(edhiitem_template.Text);
   end;
 end;
 
@@ -12739,7 +12769,6 @@ begin
       SubItems[0] := edhibag.Text;
       SubItems[1] := edhislot.Text;
       SubItems[2] := edhiitem.Text;
-      SubItems[3] := edhiitem_template.Text;
     end;
   end;
 end;

@@ -26,7 +26,7 @@ object MainForm: TMainForm
     Top = 0
     Width = 888
     Height = 701
-    ActivePage = tsCreature
+    ActivePage = tsChars
     Align = alClient
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
@@ -6505,7 +6505,7 @@ object MainForm: TMainForm
         Top = 25
         Width = 880
         Height = 648
-        ActivePage = tsNPCTrainer
+        ActivePage = tsCreatureEquipTemplate
         Align = alClient
         MultiLine = True
         TabOrder = 0
@@ -9914,26 +9914,26 @@ object MainForm: TMainForm
             Align = alTop
             BevelOuter = bvNone
             TabOrder = 0
-            object lbceequipentry2: TLabel
+            object lbceitemEntry2: TLabel
               Left = 211
               Top = 4
-              Width = 55
+              Width = 49
               Height = 13
-              Caption = 'equipentry2'
+              Caption = 'itemEntry2'
             end
-            object lbceequipentry3: TLabel
+            object lbceitemEntry3: TLabel
               Left = 327
               Top = 3
-              Width = 55
+              Width = 49
               Height = 13
-              Caption = 'equipentry3'
+              Caption = 'itemEntry3'
             end
-            object lbceequipentry1: TLabel
+            object lbceitemEntry1: TLabel
               Left = 95
               Top = 4
-              Width = 55
+              Width = 49
               Height = 13
-              Caption = 'equipentry1'
+              Caption = 'itemEntry1'
             end
             object edceentry: TLabeledEdit
               Left = 9
@@ -9948,7 +9948,7 @@ object MainForm: TMainForm
               TabOrder = 0
               OnChange = edSearchCreatureChange
             end
-            object edceequipentry1: TJvComboEdit
+            object edceitemEntry1: TJvComboEdit
               Left = 95
               Top = 23
               Width = 97
@@ -9985,7 +9985,7 @@ object MainForm: TMainForm
               TabOrder = 1
               OnButtonClick = GetItem
             end
-            object edceequipentry2: TJvComboEdit
+            object edceitemEntry2: TJvComboEdit
               Left = 211
               Top = 23
               Width = 97
@@ -10022,7 +10022,7 @@ object MainForm: TMainForm
               TabOrder = 2
               OnButtonClick = GetItem
             end
-            object edceequipentry3: TJvComboEdit
+            object edceitemEntry3: TJvComboEdit
               Left = 327
               Top = 23
               Width = 97
@@ -25927,9 +25927,9 @@ object MainForm: TMainForm
               Top = 32
               Width = 81
               Height = 21
-              EditLabel.Width = 24
+              EditLabel.Width = 51
               EditLabel.Height = 13
-              EditLabel.Caption = 'Entry'
+              EditLabel.Caption = 'eventEntry'
               TabOrder = 3
             end
           end
@@ -26336,7 +26336,8 @@ object MainForm: TMainForm
                   Width = 80
                 end
                 item
-                  Caption = 'event'
+                  Caption = 'eventEntry'
+                  Width = 70
                 end
                 item
                   Caption = 'Creature entry'
@@ -26356,7 +26357,7 @@ object MainForm: TMainForm
               OnChange = lvGameEventCreatureChange
               OnDblClick = lvGameEventCreatureDblClick
               OnSelectItem = lvGameEventCreatureSelectItem
-              ColumnsOrder = '0=80,1=50,2=80,3=160'
+              ColumnsOrder = '0=80,1=70,2=80,3=160'
               ExtendedColumns = <
                 item
                 end
@@ -26379,7 +26380,8 @@ object MainForm: TMainForm
                   Width = 80
                 end
                 item
-                  Caption = 'event'
+                  Caption = 'eventEntry'
+                  Width = 70
                 end
                 item
                   Caption = 'GO entry'
@@ -26399,7 +26401,7 @@ object MainForm: TMainForm
               OnChange = lvGameEventGOChange
               OnDblClick = lvGameEventGODblClick
               OnSelectItem = lvGameEventGOSelectItem
-              ColumnsOrder = '0=80,1=50,2=80,3=160'
+              ColumnsOrder = '0=80,1=70,2=80,3=160'
               ExtendedColumns = <
                 item
                 end
@@ -26514,7 +26516,7 @@ object MainForm: TMainForm
               BorderStyle = bsNone
               Columns = <
                 item
-                  Caption = 'entry'
+                  Caption = 'eventEntry'
                   Width = 80
                 end
                 item
@@ -26816,15 +26818,15 @@ object MainForm: TMainForm
                 TabOrder = 1
                 Text = '0000-00-00 00:00:00'
               end
-              object edgeentry: TLabeledEdit
+              object edgeeventEntry: TLabeledEdit
                 Left = 8
                 Top = 29
                 Width = 62
                 Height = 21
                 Hint = 'Entry of the game event'
-                EditLabel.Width = 23
+                EditLabel.Width = 51
                 EditLabel.Height = 13
-                EditLabel.Caption = 'entry'
+                EditLabel.Caption = 'eventEntry'
                 TabOrder = 0
               end
               object edgeholiday: TLabeledEdit
@@ -26915,7 +26917,7 @@ object MainForm: TMainForm
         Height = 25
         Align = alTop
         BevelOuter = bvNone
-        Caption = 'This char editor is old as fuck and is not ready for use, yet.'
+        Caption = 'CAUTION: This char editor is not ready for use.'
         TabOrder = 0
       end
       object PageControl8: TPageControl
@@ -27115,49 +27117,31 @@ object MainForm: TMainForm
         object tsCharacter: TTabSheet
           Caption = 'Character'
           ImageIndex = 1
-          DesignSize = (
-            872
-            620)
-          object lbhtdata: TLabel
-            Left = 19
-            Top = 81
-            Width = 389
-            Height = 13
-            Caption = 
-              'data (do not modify this values if you do not know what you do) ' +
-              'for 2.2.3 up till now'
-          end
+          ExplicitLeft = 0
           object lbhtrace: TLabel
-            Left = 374
+            Left = 318
             Top = 21
             Width = 21
             Height = 13
             Caption = 'race'
           end
           object lbhtclass: TLabel
-            Left = 472
+            Left = 405
             Top = 21
             Width = 24
             Height = 13
             Caption = 'class'
           end
           object lbhtmap: TLabel
-            Left = 19
-            Top = 191
+            Left = 20
+            Top = 184
             Width = 20
             Height = 13
             Caption = 'map'
           end
-          object lbhttaximask: TLabel
-            Left = 21
-            Top = 133
-            Width = 41
-            Height = 13
-            Caption = 'taximask'
-          end
           object lbhtzone: TLabel
-            Left = 667
-            Top = 192
+            Left = 418
+            Top = 185
             Width = 23
             Height = 13
             Caption = 'zone'
@@ -27170,9 +27154,9 @@ object MainForm: TMainForm
             Caption = 'guid'
           end
           object edhtaccount: TLabeledEdit
-            Left = 112
+            Left = 105
             Top = 40
-            Width = 121
+            Width = 81
             Height = 21
             EditLabel.Width = 60
             EditLabel.Height = 13
@@ -27180,7 +27164,7 @@ object MainForm: TMainForm
             TabOrder = 0
           end
           object edhtname: TLabeledEdit
-            Left = 239
+            Left = 192
             Top = 40
             Width = 121
             Height = 21
@@ -27190,9 +27174,9 @@ object MainForm: TMainForm
             TabOrder = 1
           end
           object edhtposition_x: TLabeledEdit
-            Left = 147
-            Top = 208
-            Width = 121
+            Left = 103
+            Top = 200
+            Width = 76
             Height = 21
             EditLabel.Width = 68
             EditLabel.Height = 13
@@ -27200,9 +27184,9 @@ object MainForm: TMainForm
             TabOrder = 2
           end
           object edhtposition_y: TLabeledEdit
-            Left = 274
-            Top = 208
-            Width = 121
+            Left = 185
+            Top = 200
+            Width = 70
             Height = 21
             EditLabel.Width = 68
             EditLabel.Height = 13
@@ -27210,9 +27194,9 @@ object MainForm: TMainForm
             TabOrder = 3
           end
           object edhtposition_z: TLabeledEdit
-            Left = 401
-            Top = 208
-            Width = 121
+            Left = 261
+            Top = 200
+            Width = 70
             Height = 21
             EditLabel.Width = 68
             EditLabel.Height = 13
@@ -27220,9 +27204,9 @@ object MainForm: TMainForm
             TabOrder = 4
           end
           object edhtorientation: TLabeledEdit
-            Left = 531
-            Top = 208
-            Width = 121
+            Left = 337
+            Top = 200
+            Width = 75
             Height = 21
             EditLabel.Width = 70
             EditLabel.Height = 13
@@ -27230,9 +27214,9 @@ object MainForm: TMainForm
             TabOrder = 5
           end
           object edhttotaltime: TLabeledEdit
-            Left = 19
-            Top = 264
-            Width = 121
+            Left = 385
+            Top = 240
+            Width = 77
             Height = 21
             EditLabel.Width = 60
             EditLabel.Height = 13
@@ -27240,9 +27224,9 @@ object MainForm: TMainForm
             TabOrder = 6
           end
           object edhtleveltime: TLabeledEdit
-            Left = 146
-            Top = 264
-            Width = 121
+            Left = 668
+            Top = 200
+            Width = 78
             Height = 21
             EditLabel.Width = 62
             EditLabel.Height = 13
@@ -27250,9 +27234,9 @@ object MainForm: TMainForm
             TabOrder = 7
           end
           object edhtlogout_time: TLabeledEdit
-            Left = 273
-            Top = 264
-            Width = 121
+            Left = 495
+            Top = 200
+            Width = 89
             Height = 21
             EditLabel.Width = 75
             EditLabel.Height = 13
@@ -27260,9 +27244,9 @@ object MainForm: TMainForm
             TabOrder = 8
           end
           object edhtrest_bonus: TLabeledEdit
-            Left = 400
-            Top = 264
-            Width = 121
+            Left = 590
+            Top = 200
+            Width = 72
             Height = 21
             EditLabel.Width = 73
             EditLabel.Height = 13
@@ -27270,9 +27254,9 @@ object MainForm: TMainForm
             TabOrder = 9
           end
           object edhtresettalents_cost: TLabeledEdit
-            Left = 19
-            Top = 320
-            Width = 121
+            Left = 547
+            Top = 240
+            Width = 87
             Height = 21
             EditLabel.Width = 101
             EditLabel.Height = 13
@@ -27280,9 +27264,9 @@ object MainForm: TMainForm
             TabOrder = 10
           end
           object edhtresettalents_time: TLabeledEdit
-            Left = 146
-            Top = 320
-            Width = 121
+            Left = 640
+            Top = 240
+            Width = 94
             Height = 21
             EditLabel.Width = 100
             EditLabel.Height = 13
@@ -27290,9 +27274,9 @@ object MainForm: TMainForm
             TabOrder = 11
           end
           object edhttrans_x: TLabeledEdit
-            Left = 19
-            Top = 373
-            Width = 121
+            Left = 20
+            Top = 281
+            Width = 77
             Height = 21
             EditLabel.Width = 55
             EditLabel.Height = 13
@@ -27300,9 +27284,9 @@ object MainForm: TMainForm
             TabOrder = 12
           end
           object edhttrans_y: TLabeledEdit
-            Left = 146
-            Top = 373
-            Width = 121
+            Left = 103
+            Top = 281
+            Width = 78
             Height = 21
             EditLabel.Width = 55
             EditLabel.Height = 13
@@ -27310,9 +27294,9 @@ object MainForm: TMainForm
             TabOrder = 13
           end
           object edhttrans_z: TLabeledEdit
-            Left = 273
-            Top = 373
-            Width = 121
+            Left = 187
+            Top = 281
+            Width = 72
             Height = 21
             EditLabel.Width = 55
             EditLabel.Height = 13
@@ -27320,9 +27304,9 @@ object MainForm: TMainForm
             TabOrder = 14
           end
           object edhttrans_o: TLabeledEdit
-            Left = 400
-            Top = 373
-            Width = 121
+            Left = 265
+            Top = 281
+            Width = 72
             Height = 21
             EditLabel.Width = 56
             EditLabel.Height = 13
@@ -27330,9 +27314,9 @@ object MainForm: TMainForm
             TabOrder = 15
           end
           object edhttransguid: TLabeledEdit
-            Left = 527
-            Top = 373
-            Width = 121
+            Left = 343
+            Top = 281
+            Width = 73
             Height = 21
             EditLabel.Width = 64
             EditLabel.Height = 13
@@ -27340,9 +27324,9 @@ object MainForm: TMainForm
             TabOrder = 16
           end
           object edhtstable_slots: TLabeledEdit
-            Left = 19
-            Top = 424
-            Width = 121
+            Left = 422
+            Top = 281
+            Width = 71
             Height = 21
             EditLabel.Width = 76
             EditLabel.Height = 13
@@ -27350,125 +27334,33 @@ object MainForm: TMainForm
             TabOrder = 17
           end
           object edhtat_login: TLabeledEdit
-            Left = 146
-            Top = 424
-            Width = 121
+            Left = 740
+            Top = 240
+            Width = 69
             Height = 21
             EditLabel.Width = 58
             EditLabel.Height = 13
             EditLabel.Caption = 'edhtat_login'
             TabOrder = 18
           end
-          object edhtpending_honor: TLabeledEdit
-            Left = 19
-            Top = 472
-            Width = 121
-            Height = 21
-            EditLabel.Width = 92
-            EditLabel.Height = 13
-            EditLabel.Caption = 'edhtpending_honor'
-            TabOrder = 19
-          end
-          object edhtlast_honor_date: TLabeledEdit
-            Left = 146
-            Top = 472
-            Width = 121
-            Height = 21
-            EditLabel.Width = 97
-            EditLabel.Height = 13
-            EditLabel.Caption = 'edhtlast_honor_date'
-            TabOrder = 20
-          end
-          object edhtlast_kill_date: TLabeledEdit
-            Left = 273
-            Top = 472
-            Width = 121
-            Height = 21
-            EditLabel.Width = 82
-            EditLabel.Height = 13
-            EditLabel.Caption = 'edhtlast_kill_date'
-            TabOrder = 21
-          end
           object cbhtonline: TCheckBox
-            Left = 689
-            Top = 42
-            Width = 97
+            Left = 760
+            Top = 3
+            Width = 49
             Height = 17
             Caption = 'online'
-            TabOrder = 22
+            TabOrder = 19
           end
           object cbhtcinematic: TCheckBox
-            Left = 768
-            Top = 266
-            Width = 97
+            Left = 567
+            Top = 3
+            Width = 62
             Height = 17
             Caption = 'cinematic'
-            TabOrder = 23
-          end
-          object cbhtis_logout_resting: TCheckBox
-            Left = 555
-            Top = 266
-            Width = 97
-            Height = 17
-            Caption = 'is_logout_resting'
-            TabOrder = 24
-          end
-          object cbhtat_login: TCheckBox
-            Left = 665
-            Top = 266
-            Width = 97
-            Height = 17
-            Caption = 'at_login'
-            TabOrder = 25
-          end
-          object cbhtgmstate: TCheckBox
-            Left = 566
-            Top = 42
-            Width = 97
-            Height = 17
-            Caption = 'gmstate'
-            TabOrder = 26
-          end
-          object edhtdata: TJvComboEdit
-            Left = 19
-            Top = 100
-            Width = 838
-            Height = 21
-            Anchors = [akLeft, akTop, akRight]
-            ButtonWidth = 22
-            ClickKey = 13
-            Glyph.Data = {
-              36030000424D3603000000000000360000002800000010000000100000000100
-              18000000000000030000120B0000120B00000000000000000000FFFFFFFFFFFF
-              FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-              FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-              FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-              FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-              FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-              FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-              FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-              FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-              FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFD79C64
-              DB9E63FFFFFFFFFFFFFFFFFFFFFFFFDA9E63D89D65FFFFFFFFFFFFFFFFFFFFFF
-              FFD79C64DB9E63FFFFFFC2773FEBB36FEDB570D19059FFFFFFFFFFFFC57D44ED
-              B571EBB26ECC9164FFFFFFFFFFFFC27840EBB36FECB470D1915AC48355D5955B
-              D89960CA8C5FFFFFFFFFFFFFC68457D8995FD6965BCE9974FFFFFFFFFFFFC380
-              52D6975DD99A61CB8D5FFFFFFFC68A65C17F54FFFFFFFFFFFFFFFFFFFFFFFFC2
-              8157C58963FFFFFFFFFFFFFFFFFFFFFFFFC68B65C17F54FFFFFFFFFFFFFFFFFF
-              FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-              FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-              FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-              FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-              FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-              FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-              FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-              FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-              FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF}
-            TabOrder = 27
-            OnButtonClick = edhtdataButtonClick
+            TabOrder = 20
           end
           object edhtrace: TJvComboEdit
-            Left = 374
+            Left = 319
             Top = 40
             Width = 80
             Height = 21
@@ -27501,11 +27393,11 @@ object MainForm: TMainForm
               FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
               FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
               FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF}
-            TabOrder = 28
+            TabOrder = 21
             OnButtonClick = GetRace
           end
           object edhtclass: TJvComboEdit
-            Left = 472
+            Left = 405
             Top = 40
             Width = 80
             Height = 21
@@ -27538,13 +27430,13 @@ object MainForm: TMainForm
               FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
               FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
               FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF}
-            TabOrder = 29
+            TabOrder = 22
             OnButtonClick = GetClass
           end
           object edhtmap: TJvComboEdit
             Left = 19
-            Top = 208
-            Width = 122
+            Top = 200
+            Width = 78
             Height = 21
             ButtonWidth = 22
             ClickKey = 13
@@ -27575,50 +27467,13 @@ object MainForm: TMainForm
               FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
               FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
               FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF}
-            TabOrder = 30
+            TabOrder = 23
             OnButtonClick = GetMap
           end
-          object edhttaximask: TJvComboEdit
-            Left = 19
-            Top = 152
-            Width = 375
-            Height = 21
-            ButtonWidth = 22
-            ClickKey = 13
-            Glyph.Data = {
-              36030000424D3603000000000000360000002800000010000000100000000100
-              18000000000000030000120B0000120B00000000000000000000FFFFFFFFFFFF
-              FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-              FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-              FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-              FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-              FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-              FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-              FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-              FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-              FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFD79C64
-              DB9E63FFFFFFFFFFFFFFFFFFFFFFFFDA9E63D89D65FFFFFFFFFFFFFFFFFFFFFF
-              FFD79C64DB9E63FFFFFFC2773FEBB36FEDB570D19059FFFFFFFFFFFFC57D44ED
-              B571EBB26ECC9164FFFFFFFFFFFFC27840EBB36FECB470D1915AC48355D5955B
-              D89960CA8C5FFFFFFFFFFFFFC68457D8995FD6965BCE9974FFFFFFFFFFFFC380
-              52D6975DD99A61CB8D5FFFFFFFC68A65C17F54FFFFFFFFFFFFFFFFFFFFFFFFC2
-              8157C58963FFFFFFFFFFFFFFFFFFFFFFFFC68B65C17F54FFFFFFFFFFFFFFFFFF
-              FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-              FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-              FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-              FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-              FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-              FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-              FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-              FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-              FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF}
-            TabOrder = 31
-            OnButtonClick = edhttaximaskButtonClick
-          end
           object edhtzone: TJvComboEdit
-            Left = 667
-            Top = 208
-            Width = 80
+            Left = 418
+            Top = 200
+            Width = 71
             Height = 21
             ButtonWidth = 22
             ClickKey = 13
@@ -27649,7 +27504,7 @@ object MainForm: TMainForm
               FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
               FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
               FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF}
-            TabOrder = 32
+            TabOrder = 24
             OnButtonClick = GetArea
           end
           object btShowCharacterScript: TButton
@@ -27658,7 +27513,7 @@ object MainForm: TMainForm
             Width = 154
             Height = 25
             Caption = 'Show Character Script'
-            TabOrder = 33
+            TabOrder = 25
             OnClick = btShowCharacterScriptClick
           end
           object edhtguid: TJvComboEdit
@@ -27711,8 +27566,446 @@ object MainForm: TMainForm
               072D342A3C4A4A4A4A4A4A4A4A4A420D322005374A4A4A4A4A4A4A4A4A1B4018
               1C26174A4A4A4A4A4A4A4A4A4A4A2E082F2C4A4A4A4A4A4A4A4A4A4A4A4A4A10
               0E4A4A4A4A4A4A4A4A4A4A4A4A4A4A4A4A4A4A4A4A4A4A4A4A4A}
-            TabOrder = 34
+            TabOrder = 26
             OnButtonClick = edhtguidButtonClick
+          end
+          object edhtgender: TLabeledEdit
+            Left = 491
+            Top = 40
+            Width = 54
+            Height = 21
+            EditLabel.Width = 54
+            EditLabel.Height = 13
+            EditLabel.Caption = 'edhtgender'
+            TabOrder = 27
+          end
+          object edhtlevel: TLabeledEdit
+            Left = 551
+            Top = 40
+            Width = 50
+            Height = 21
+            EditLabel.Width = 43
+            EditLabel.Height = 13
+            EditLabel.Caption = 'edhtlevel'
+            TabOrder = 28
+          end
+          object edhtxp: TLabeledEdit
+            Left = 607
+            Top = 40
+            Width = 49
+            Height = 21
+            EditLabel.Width = 32
+            EditLabel.Height = 13
+            EditLabel.Caption = 'edhtxp'
+            TabOrder = 29
+          end
+          object edhtmoney: TLabeledEdit
+            Left = 662
+            Top = 40
+            Width = 67
+            Height = 21
+            EditLabel.Width = 52
+            EditLabel.Height = 13
+            EditLabel.Caption = 'edhtmoney'
+            TabOrder = 30
+          end
+          object edhtplayerBytes: TLabeledEdit
+            Left = 19
+            Top = 80
+            Width = 80
+            Height = 21
+            EditLabel.Width = 75
+            EditLabel.Height = 13
+            EditLabel.Caption = 'edhtplayerBytes'
+            TabOrder = 31
+          end
+          object edhtplayerBytes2: TLabeledEdit
+            Left = 105
+            Top = 80
+            Width = 81
+            Height = 21
+            EditLabel.Width = 81
+            EditLabel.Height = 13
+            EditLabel.Caption = 'edhtplayerBytes2'
+            TabOrder = 32
+          end
+          object edhtplayerFlags: TLabeledEdit
+            Left = 192
+            Top = 80
+            Width = 63
+            Height = 21
+            EditLabel.Width = 74
+            EditLabel.Height = 13
+            EditLabel.Caption = 'edhtplayerFlags'
+            TabOrder = 33
+          end
+          object edhtinstance_id: TLabeledEdit
+            Left = 261
+            Top = 80
+            Width = 52
+            Height = 21
+            EditLabel.Width = 75
+            EditLabel.Height = 13
+            EditLabel.Caption = 'edhtinstance_id'
+            TabOrder = 34
+          end
+          object edhtinstance_mode_mask: TLabeledEdit
+            Left = 319
+            Top = 80
+            Width = 90
+            Height = 21
+            EditLabel.Width = 124
+            EditLabel.Height = 13
+            EditLabel.Caption = 'edhtinstance_mode_mask'
+            TabOrder = 35
+          end
+          object edhtextra_flags: TLabeledEdit
+            Left = 735
+            Top = 40
+            Width = 74
+            Height = 21
+            EditLabel.Width = 72
+            EditLabel.Height = 13
+            EditLabel.Caption = 'edhtextra_flags'
+            TabOrder = 36
+          end
+          object edhtdeath_expire_time: TLabeledEdit
+            Left = 415
+            Top = 80
+            Width = 109
+            Height = 21
+            EditLabel.Width = 107
+            EditLabel.Height = 13
+            EditLabel.Caption = 'edhtdeath_expire_time'
+            TabOrder = 37
+          end
+          object edhttaxi_path: TLabeledEdit
+            Left = 530
+            Top = 80
+            Width = 53
+            Height = 21
+            EditLabel.Width = 64
+            EditLabel.Height = 13
+            EditLabel.Caption = 'edhttaxi_path'
+            TabOrder = 38
+          end
+          object edhtarenaPoints: TLabeledEdit
+            Left = 19
+            Top = 120
+            Width = 59
+            Height = 21
+            EditLabel.Width = 77
+            EditLabel.Height = 13
+            EditLabel.Caption = 'edhtarenaPoints'
+            TabOrder = 39
+          end
+          object edhttotalHonorPoints: TLabeledEdit
+            Left = 84
+            Top = 120
+            Width = 87
+            Height = 21
+            EditLabel.Width = 99
+            EditLabel.Height = 13
+            EditLabel.Caption = 'edhttotalHonorPoints'
+            TabOrder = 40
+          end
+          object edhttodayHonorPoints: TLabeledEdit
+            Left = 177
+            Top = 120
+            Width = 81
+            Height = 21
+            EditLabel.Width = 105
+            EditLabel.Height = 13
+            EditLabel.Caption = 'edhttodayHonorPoints'
+            TabOrder = 41
+          end
+          object edhtyesterdayHonorPoints: TLabeledEdit
+            Left = 264
+            Top = 120
+            Width = 99
+            Height = 21
+            EditLabel.Width = 124
+            EditLabel.Height = 13
+            EditLabel.Caption = 'edhtyesterdayHonorPoints'
+            TabOrder = 42
+          end
+          object edhttotalKills: TLabeledEdit
+            Left = 369
+            Top = 120
+            Width = 72
+            Height = 21
+            EditLabel.Width = 59
+            EditLabel.Height = 13
+            EditLabel.Caption = 'edhttotalKills'
+            TabOrder = 43
+          end
+          object edhttodayKills: TLabeledEdit
+            Left = 447
+            Top = 120
+            Width = 66
+            Height = 21
+            EditLabel.Width = 65
+            EditLabel.Height = 13
+            EditLabel.Caption = 'edhttodayKills'
+            TabOrder = 44
+          end
+          object edhtyesterdayKills: TLabeledEdit
+            Left = 519
+            Top = 120
+            Width = 89
+            Height = 21
+            EditLabel.Width = 84
+            EditLabel.Height = 13
+            EditLabel.Caption = 'edhtyesterdayKills'
+            TabOrder = 45
+          end
+          object edhtchosenTitle: TLabeledEdit
+            Left = 614
+            Top = 120
+            Width = 83
+            Height = 21
+            EditLabel.Width = 76
+            EditLabel.Height = 13
+            EditLabel.Caption = 'edhtchosenTitle'
+            TabOrder = 46
+          end
+          object edhtknownCurrencies: TLabeledEdit
+            Left = 589
+            Top = 80
+            Width = 92
+            Height = 21
+            EditLabel.Width = 103
+            EditLabel.Height = 13
+            EditLabel.Caption = 'edhtknownCurrencies'
+            TabOrder = 47
+          end
+          object edhtwatchedFaction: TLabeledEdit
+            Left = 687
+            Top = 80
+            Width = 122
+            Height = 21
+            EditLabel.Width = 97
+            EditLabel.Height = 13
+            EditLabel.Caption = 'edhtwatchedFaction'
+            TabOrder = 48
+          end
+          object edhtdrunk: TLabeledEdit
+            Left = 703
+            Top = 120
+            Width = 49
+            Height = 21
+            EditLabel.Width = 48
+            EditLabel.Height = 13
+            EditLabel.Caption = 'edhtdrunk'
+            TabOrder = 49
+          end
+          object edhthealth: TLabeledEdit
+            Left = 19
+            Top = 160
+            Width = 57
+            Height = 21
+            EditLabel.Width = 50
+            EditLabel.Height = 13
+            EditLabel.Caption = 'edhthealth'
+            TabOrder = 50
+          end
+          object edhtpower1: TLabeledEdit
+            Left = 82
+            Top = 160
+            Width = 57
+            Height = 21
+            EditLabel.Width = 56
+            EditLabel.Height = 13
+            EditLabel.Caption = 'edhtpower1'
+            TabOrder = 51
+          end
+          object edhtpower2: TLabeledEdit
+            Left = 145
+            Top = 160
+            Width = 59
+            Height = 21
+            EditLabel.Width = 56
+            EditLabel.Height = 13
+            EditLabel.Caption = 'edhtpower2'
+            TabOrder = 52
+          end
+          object edhtpower3: TLabeledEdit
+            Left = 210
+            Top = 160
+            Width = 65
+            Height = 21
+            EditLabel.Width = 56
+            EditLabel.Height = 13
+            EditLabel.Caption = 'edhtpower3'
+            TabOrder = 53
+          end
+          object edhtpower4: TLabeledEdit
+            Left = 281
+            Top = 160
+            Width = 65
+            Height = 21
+            EditLabel.Width = 56
+            EditLabel.Height = 13
+            EditLabel.Caption = 'edhtpower4'
+            TabOrder = 54
+          end
+          object edhtpower5: TLabeledEdit
+            Left = 352
+            Top = 160
+            Width = 65
+            Height = 21
+            EditLabel.Width = 56
+            EditLabel.Height = 13
+            EditLabel.Caption = 'edhtpower5'
+            TabOrder = 55
+          end
+          object edhtpower6: TLabeledEdit
+            Left = 423
+            Top = 160
+            Width = 65
+            Height = 21
+            EditLabel.Width = 56
+            EditLabel.Height = 13
+            EditLabel.Caption = 'edhtpower6'
+            TabOrder = 56
+          end
+          object edhtpower7: TLabeledEdit
+            Left = 494
+            Top = 160
+            Width = 65
+            Height = 21
+            EditLabel.Width = 56
+            EditLabel.Height = 13
+            EditLabel.Caption = 'edhtpower7'
+            TabOrder = 57
+          end
+          object edhtlatency: TLabeledEdit
+            Left = 565
+            Top = 160
+            Width = 68
+            Height = 21
+            EditLabel.Width = 55
+            EditLabel.Height = 13
+            EditLabel.Caption = 'edhtlatency'
+            TabOrder = 58
+          end
+          object edhtspeccount: TLabeledEdit
+            Left = 639
+            Top = 160
+            Width = 76
+            Height = 21
+            EditLabel.Width = 71
+            EditLabel.Height = 13
+            EditLabel.Caption = 'edhtspeccount'
+            TabOrder = 59
+          end
+          object edhtactivespec: TLabeledEdit
+            Left = 721
+            Top = 160
+            Width = 88
+            Height = 21
+            EditLabel.Width = 73
+            EditLabel.Height = 13
+            EditLabel.Caption = 'edhtactivespec'
+            TabOrder = 60
+          end
+          object edhtexploredZones: TLabeledEdit
+            Left = 20
+            Top = 363
+            Width = 789
+            Height = 21
+            EditLabel.Width = 91
+            EditLabel.Height = 13
+            EditLabel.Caption = 'edhtexploredZones'
+            TabOrder = 61
+          end
+          object edhtequipmentCache: TLabeledEdit
+            Left = 19
+            Top = 324
+            Width = 790
+            Height = 21
+            EditLabel.Width = 101
+            EditLabel.Height = 13
+            EditLabel.Caption = 'edhtequipmentCache'
+            TabOrder = 62
+          end
+          object edhtammoId: TLabeledEdit
+            Left = 758
+            Top = 120
+            Width = 51
+            Height = 21
+            EditLabel.Width = 58
+            EditLabel.Height = 13
+            EditLabel.Caption = 'edhtammoId'
+            TabOrder = 63
+          end
+          object edhtknownTitles: TLabeledEdit
+            Left = 20
+            Top = 404
+            Width = 789
+            Height = 21
+            EditLabel.Width = 78
+            EditLabel.Height = 13
+            EditLabel.Caption = 'edhtknownTitles'
+            TabOrder = 64
+          end
+          object edhtactionBars: TLabeledEdit
+            Left = 468
+            Top = 240
+            Width = 73
+            Height = 21
+            EditLabel.Width = 71
+            EditLabel.Height = 13
+            EditLabel.Caption = 'edhtactionBars'
+            TabOrder = 65
+          end
+          object edhtdeleteInfos_Account: TLabeledEdit
+            Left = 19
+            Top = 240
+            Width = 121
+            Height = 21
+            EditLabel.Width = 119
+            EditLabel.Height = 13
+            EditLabel.Caption = 'edhtdeleteInfos_Account'
+            TabOrder = 66
+          end
+          object edhtdeleteInfos_Name: TLabeledEdit
+            Left = 148
+            Top = 240
+            Width = 121
+            Height = 21
+            EditLabel.Width = 107
+            EditLabel.Height = 13
+            EditLabel.Caption = 'edhtdeleteInfos_Name'
+            TabOrder = 67
+          end
+          object edhtdeleteDate: TLabeledEdit
+            Left = 275
+            Top = 240
+            Width = 104
+            Height = 21
+            EditLabel.Width = 73
+            EditLabel.Height = 13
+            EditLabel.Caption = 'edhtdeleteDate'
+            TabOrder = 68
+          end
+          object edhttaximask: TLabeledEdit
+            Left = 20
+            Top = 443
+            Width = 789
+            Height = 21
+            EditLabel.Width = 62
+            EditLabel.Height = 13
+            EditLabel.Caption = 'edhttaximask'
+            TabOrder = 69
+          end
+          object cbhtis_logout_resting: TCheckBox
+            Left = 635
+            Top = 3
+            Width = 119
+            Height = 17
+            Caption = 'cbhtis_logout_resting'
+            TabOrder = 70
           end
         end
         object tsCharacterInventory: TTabSheet
@@ -27900,13 +28193,6 @@ object MainForm: TMainForm
             NumGlyphs = 2
             OnClick = btCharInvAddClick
           end
-          object lbhiitem_template: TLabel
-            Left = 355
-            Top = 485
-            Width = 65
-            Height = 13
-            Caption = 'item_template'
-          end
           object btShowCharacterInventoryScript: TButton
             Left = 8
             Top = 540
@@ -27946,10 +28232,7 @@ object MainForm: TMainForm
                 Width = 100
               end
               item
-                Width = 100
-              end
-              item
-                Width = 200
+                Width = 250
               end>
             Groups = <>
             HideSelection = False
@@ -27959,10 +28242,8 @@ object MainForm: TMainForm
             ViewStyle = vsReport
             OnChange = lvCharacterInventoryChange
             OnSelectItem = lvCharacterInventorySelectItem
-            ColumnsOrder = '0=60,1=60,2=60,3=100,4=100,5=200'
+            ColumnsOrder = '0=60,1=60,2=60,3=100,4=250'
             ExtendedColumns = <
-              item
-              end
               item
               end
               item
@@ -27985,43 +28266,6 @@ object MainForm: TMainForm
             EditLabel.Caption = 'guid'
             TabOrder = 3
           end
-          object edhiitem_template: TJvComboEdit
-            Left = 355
-            Top = 500
-            Width = 80
-            Height = 21
-            ButtonWidth = 22
-            ClickKey = 13
-            Glyph.Data = {
-              36030000424D3603000000000000360000002800000010000000100000000100
-              18000000000000030000120B0000120B00000000000000000000FFFFFFFFFFFF
-              FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-              FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-              FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-              FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-              FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-              FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-              FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-              FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-              FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFD79C64
-              DB9E63FFFFFFFFFFFFFFFFFFFFFFFFDA9E63D89D65FFFFFFFFFFFFFFFFFFFFFF
-              FFD79C64DB9E63FFFFFFC2773FEBB36FEDB570D19059FFFFFFFFFFFFC57D44ED
-              B571EBB26ECC9164FFFFFFFFFFFFC27840EBB36FECB470D1915AC48355D5955B
-              D89960CA8C5FFFFFFFFFFFFFC68457D8995FD6965BCE9974FFFFFFFFFFFFC380
-              52D6975DD99A61CB8D5FFFFFFFC68A65C17F54FFFFFFFFFFFFFFFFFFFFFFFFC2
-              8157C58963FFFFFFFFFFFFFFFFFFFFFFFFC68B65C17F54FFFFFFFFFFFFFFFFFF
-              FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-              FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-              FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-              FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-              FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-              FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-              FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-              FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-              FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF}
-            TabOrder = 4
-            OnButtonClick = GetItem
-          end
           object edhibag: TLabeledEdit
             Left = 94
             Top = 500
@@ -28030,7 +28274,7 @@ object MainForm: TMainForm
             EditLabel.Width = 18
             EditLabel.Height = 13
             EditLabel.Caption = 'bag'
-            TabOrder = 5
+            TabOrder = 4
           end
           object edhislot: TLabeledEdit
             Left = 183
@@ -28040,7 +28284,7 @@ object MainForm: TMainForm
             EditLabel.Width = 16
             EditLabel.Height = 13
             EditLabel.Caption = 'slot'
-            TabOrder = 6
+            TabOrder = 5
           end
           object edhiitem: TLabeledEdit
             Left = 269
@@ -28050,7 +28294,7 @@ object MainForm: TMainForm
             EditLabel.Width = 19
             EditLabel.Height = 13
             EditLabel.Caption = 'item'
-            TabOrder = 7
+            TabOrder = 6
           end
         end
         object tsCharacterScript: TTabSheet
